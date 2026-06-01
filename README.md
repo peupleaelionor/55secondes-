@@ -132,23 +132,29 @@ placeholders CSS/SVG — rien ne casse.
 
 ### Fichiers attendus (drop-in, l'UI les détecte automatiquement)
 
-| Fichier                                   | Usage                                  |
-| ----------------------------------------- | -------------------------------------- |
-| `public/assets/icons/app-icon.png`        | Favicon, icône Apple/PWA               |
-| `public/assets/icons/timer-ring.png`      | Anneau du chrono sur l'accueil         |
-| `public/assets/icons/rocket.png`          | Carte de partage (résultat)            |
-| `public/assets/og/hero.png`               | Fond ambiant 9:16 de l'accueil         |
-| `public/assets/badges/entrepreneur.png`   | Badge « Entrepreneur validé »          |
-| `public/assets/badges/banquier.png`       | Badge « Banquier impressionné »        |
-| `public/assets/badges/cashflow.png`       | Badge « Cashflow propre »              |
-| `public/assets/badges/roi-du-flux.png`    | Badge « Roi du flux »                  |
-| `public/assets/badges/risque-maitrise.png`| Badge « Risque maîtrisé »              |
-| `public/assets/badges/momentum-royal.png` | Badge « Momentum royal »               |
+| Fichier                                    | Usage                                  |
+| ------------------------------------------ | -------------------------------------- |
+| `public/assets/app-icon.png`               | Favicon, icône Apple/PWA               |
+| `public/assets/ui/timer-ring.png`          | Anneau du chrono sur l'accueil         |
+| `public/assets/ui/rocket.png`              | Carte de partage (résultat)            |
+| `public/assets/ui/texture.png`             | Texture d'overlay (optionnel)          |
+| `public/assets/og/hero.png`                | Fond ambiant 9:16 de l'accueil         |
+| `public/assets/og/og-default.png`          | Image OpenGraph (1200×630)             |
+| `public/assets/story/story-teaser.png`     | Visuel story 9:16                      |
+| `public/assets/badges/entrepreneur.png`    | Badge « Entrepreneur validé »          |
+| `public/assets/badges/banquier.png`        | Badge « Banquier impressionné »        |
+| `public/assets/badges/cashflow.png`        | Badge « Cashflow propre »              |
+| `public/assets/badges/roi-du-flux.png`     | Badge « Roi du flux »                  |
+| `public/assets/badges/risque-maitrise.png` | Badge « Risque maîtrisé »              |
+| `public/assets/badges/momentum-royal.png`  | Badge « Momentum royal »               |
+| `public/assets/avatars/{neocash,mabeleflow,kevinb}.png` | Avatars du classement     |
 
-> Les PNG doivent être **sans filigrane** et, pour les badges/icônes, à **fond
-> transparent**. Format carré pour icônes/badges, 9:16 pour le hero.
+> Les PNG doivent être **sans filigrane** et, pour les badges/icônes/avatars, à
+> **fond transparent**. Format carré pour icônes/badges/avatars, 9:16 pour le
+> hero et les visuels story. Tout asset encore filigrané ne doit pas être commité
+> : l'UI affichera automatiquement le placeholder propre à la place.
 
-Prompts recommandés (image model type Gemini / Midjourney) :
+Prompts recommandés (compatibles avec n'importe quel générateur d'images) :
 
 - **A. App icon** — `Premium mobile game app icon for "55 Seconds", dark navy black background, glowing electric purple number 55, circular timer ring, fintech gaming aesthetic, high contrast, minimal, luxury, no text except 55, iOS app icon, 1024x1024, clean vector-like 3D glow.`
 - **B. Hero background** — `Dark premium mobile game background, deep black and midnight purple gradient, subtle glassmorphism panels, electric purple light streaks, soft neon particles, luxury fintech game aesthetic, no text, 9:16 vertical.`

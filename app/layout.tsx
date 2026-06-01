@@ -13,8 +13,8 @@ export const metadata: Metadata = {
   applicationName: "55 Seconds",
   manifest: "/manifest.json",
   icons: {
-    icon: "/assets/icons/app-icon.png",
-    apple: "/assets/icons/app-icon.png",
+    icon: "/assets/app-icon.png",
+    apple: "/assets/app-icon.png",
   },
   appleWebApp: {
     capable: true,
