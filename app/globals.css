@@ -1,0 +1,101 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+    Helvetica, Arial, "Apple Color Emoji", sans-serif;
+  --bg: #05030a;
+  --bg-secondary: #0b0718;
+  --violet: #8b5cf6;
+  --violet-glow: #a855f7;
+  --violet-light: #c084fc;
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+html,
+body {
+  background-color: var(--bg);
+  color: #f8fafc;
+  overflow-x: hidden;
+}
+
+body {
+  min-height: 100dvh;
+  /* layered radial glows for the premium night-sky feel */
+  background-image:
+    radial-gradient(900px 520px at 78% -8%, rgba(168, 85, 247, 0.18), transparent 60%),
+    radial-gradient(700px 480px at 12% 8%, rgba(139, 92, 246, 0.12), transparent 55%),
+    radial-gradient(800px 700px at 50% 110%, rgba(120, 70, 200, 0.1), transparent 60%);
+  background-attachment: fixed;
+}
+
+/* Hide scrollbars but keep scroll */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+@layer components {
+  .glass {
+    background: rgba(18, 15, 32, 0.78);
+    border: 1px solid rgba(160, 110, 255, 0.25);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+  }
+
+  .glass-strong {
+    background: rgba(22, 18, 40, 0.9);
+    border: 1px solid rgba(160, 110, 255, 0.32);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+  }
+
+  .text-gradient-violet {
+    background: linear-gradient(100deg, #c084fc 0%, #8b5cf6 55%, #a855f7 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .btn-glow {
+    background: linear-gradient(135deg, #8b5cf6 0%, #a855f7 100%);
+    box-shadow:
+      0 10px 30px rgba(139, 92, 246, 0.45),
+      0 0 0 1px rgba(192, 132, 252, 0.35) inset;
+  }
+
+  .divider {
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(160, 110, 255, 0.25),
+      transparent
+    );
+  }
+}
+
+/* Focus visibility for accessibility */
+:focus-visible {
+  outline: 2px solid #c084fc;
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}

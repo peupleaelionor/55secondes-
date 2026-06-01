@@ -1,0 +1,19 @@
+{
+  "name": "55 Seconds",
+  "short_name": "55 Seconds",
+  "description": "Transforme 0,18 € en profil finançable en 55 secondes. Jeu de simulation entrepreneuriale.",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#05030A",
+  "theme_color": "#05030A",
+  "categories": ["games", "education"],
+  "icons": [
+    {
+      "src": "/assets/app-icon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
