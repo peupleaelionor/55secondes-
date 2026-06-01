@@ -124,35 +124,45 @@ Monétisation B2B future (architecture seulement, pas de backend en V1) : licenc
 école, dashboard formateur, challenges privés, classement de cohorte, packs
 sectoriels, export de résultats.
 
-## 🎨 Assets à générer
+## 🎨 Assets
 
-Les images ne sont **pas** commitées : déposez-les dans `public/assets/**` (voir
-`lib/assets.ts` pour le mapping). Tant qu'une image est absente, l'UI utilise des
-placeholders CSS/SVG — rien ne casse.
+Un pack d'assets propres (sans filigrane, fonds transparents) est **inclus** dans
+`public/assets/**`. **Tous les chemins passent par `lib/assets.ts`** via l'objet
+`ASSETS` — ne jamais hardcoder un chemin `/assets/...` dans un composant.
 
-### Fichiers attendus (drop-in, l'UI les détecte automatiquement)
+```ts
+import { ASSETS, getBadgeArt, asset } from "@/lib/assets";
 
-| Fichier                                    | Usage                                  |
-| ------------------------------------------ | -------------------------------------- |
-| `public/assets/app-icon.png`               | Favicon, icône Apple/PWA               |
-| `public/assets/ui/timer-ring.png`          | Anneau du chrono sur l'accueil         |
-| `public/assets/ui/rocket.png`              | Carte de partage (résultat)            |
-| `public/assets/ui/texture.png`             | Texture d'overlay (optionnel)          |
-| `public/assets/og/hero.png`                | Fond ambiant 9:16 de l'accueil         |
-| `public/assets/og/og-default.png`          | Image OpenGraph (1200×630)             |
-| `public/assets/story/story-teaser.png`     | Visuel story 9:16                      |
-| `public/assets/badges/entrepreneur.png`    | Badge « Entrepreneur validé »          |
-| `public/assets/badges/banquier.png`        | Badge « Banquier impressionné »        |
-| `public/assets/badges/cashflow.png`        | Badge « Cashflow propre »              |
-| `public/assets/badges/roi-du-flux.png`     | Badge « Roi du flux »                  |
-| `public/assets/badges/risque-maitrise.png` | Badge « Risque maîtrisé »              |
-| `public/assets/badges/momentum-royal.png`  | Badge « Momentum royal »               |
-| `public/assets/avatars/{neocash,mabeleflow,kevinb}.png` | Avatars du classement     |
+ASSETS.appIcon                 // icône d'app
+ASSETS.badges.shieldVerified   // illustration de badge
+ASSETS.story.teaser            // fond ambiant 9:16 (accueil)
+getBadgeArt("entrepreneur")    // badge id → illustration (ou undefined → fallback)
+asset(path)                    // normalise + fallback vers ASSETS.appIcon
+```
 
-> Les PNG doivent être **sans filigrane** et, pour les badges/icônes/avatars, à
-> **fond transparent**. Format carré pour icônes/badges/avatars, 9:16 pour le
-> hero et les visuels story. Tout asset encore filigrané ne doit pas être commité
-> : l'UI affichera automatiquement le placeholder propre à la place.
+Chaque image est rendue via `<AssetImage>`, qui **bascule automatiquement sur un
+placeholder CSS/SVG/Lucide** si le fichier est absent : un asset manquant ne casse
+jamais le build ni l'UI.
+
+### Fichiers inclus
+
+| Fichier                                      | Usage                                   |
+| -------------------------------------------- | --------------------------------------- |
+| `public/assets/app-icon.png`                 | Favicon, icône Apple/PWA                |
+| `public/assets/ui/badge-frame.png`           | Cadre de badge (UI)                     |
+| `public/assets/badges/shield-verified.png`   | Badge « Entrepreneur validé »           |
+| `public/assets/badges/shield-lock.png`       | Badge « Risque maîtrisé »               |
+| `public/assets/badges/shield-energy.png`     | Badge « Cashflow propre »               |
+| `public/assets/badges/crown-upgrade.png`     | Badge « Roi du flux »                   |
+| `public/assets/badges/flame-core.png`        | Badge « Série chaude »                  |
+| `public/assets/badges/rocket-boost.png`      | Badge « Momentum royal » + carte partage|
+| `public/assets/avatars/mystery-gentleman.png`| Badge « Banquier impressionné »         |
+| `public/assets/story/story-teaser.png`       | Fond ambiant 9:16 (accueil)             |
+| `public/assets/og/og-main.png`               | Image OpenGraph (1200×630)              |
+
+Assets optionnels non fournis (fallback automatique) : `ui/timer-ring.png`
+(sinon anneau SVG animé). Pour en ajouter, dépose le PNG au chemin référencé dans
+`ASSETS` — aucun code à modifier.
 
 Prompts recommandés (compatibles avec n'importe quel générateur d'images) :
 

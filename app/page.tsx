@@ -21,7 +21,7 @@ import { GlowButton } from "@/components/ui/GlowButton";
 import { TimerRing } from "@/components/game/TimerRing";
 import { Disclaimer } from "@/components/layout/Disclaimer";
 import { AssetImage } from "@/components/AssetImage";
-import { ogAssets } from "@/lib/assets";
+import { ASSETS } from "@/lib/assets";
 import { GAME } from "@/lib/game/engine";
 import { formatEuro } from "@/lib/format";
 
@@ -45,7 +45,7 @@ export default function HomePage() {
     <div className="space-y-5">
       {/* Ambient hero background (renders only if the asset is present) */}
       <AssetImage
-        src={ogAssets.hero}
+        src={ASSETS.story.teaser}
         alt=""
         className="pointer-events-none fixed inset-x-0 top-0 -z-10 mx-auto h-[55vh] w-full max-w-md object-cover opacity-30 [mask-image:linear-gradient(to_bottom,black,transparent)]"
         fallback={null}

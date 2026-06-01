@@ -4,7 +4,7 @@ import { forwardRef } from "react";
 import type { Archetype } from "@/lib/game/archetypes";
 import { formatNumber } from "@/lib/format";
 import { AssetImage } from "@/components/AssetImage";
-import { iconAssets } from "@/lib/assets";
+import { ASSETS } from "@/lib/assets";
 
 interface Props {
   score: number;
@@ -36,7 +36,7 @@ export const ResultShareCard = forwardRef<HTMLDivElement, Props>(function Result
         aria-hidden
       />
       <AssetImage
-        src={iconAssets.rocket}
+        src={ASSETS.ui.rocket}
         alt=""
         className="pointer-events-none absolute right-3 top-10 h-20 w-20 object-contain opacity-90"
         fallback={null}

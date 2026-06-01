@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { AppShell } from "@/components/layout/AppShell";
+import { ASSETS } from "@/lib/assets";
 
 const TITLE = "55 Seconds — Le jeu du profil finançable";
 const DESCRIPTION =
@@ -13,8 +14,8 @@ export const metadata: Metadata = {
   applicationName: "55 Seconds",
   manifest: "/manifest.json",
   icons: {
-    icon: "/assets/app-icon.png",
-    apple: "/assets/app-icon.png",
+    icon: ASSETS.appIcon,
+    apple: ASSETS.appIcon,
   },
   appleWebApp: {
     capable: true,
@@ -26,7 +27,7 @@ export const metadata: Metadata = {
     description: DESCRIPTION,
     type: "website",
     siteName: "55 Seconds",
-    images: [{ url: "/assets/og/og-default.png", width: 1200, height: 630 }],
+    images: [{ url: ASSETS.og.main, width: 1200, height: 630 }],
   },
   twitter: {
     card: "summary_large_image",

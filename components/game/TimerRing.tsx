@@ -2,7 +2,7 @@
 
 import { ProgressRing } from "./ProgressRing";
 import { AssetImage } from "@/components/AssetImage";
-import { iconAssets } from "@/lib/assets";
+import { ASSETS } from "@/lib/assets";
 import { GAME } from "@/lib/game/engine";
 import { formatTime } from "@/lib/format";
 
@@ -36,7 +36,7 @@ export function TimerRing({ timeLeft, size = 200, hero }: Props) {
     return (
       <div className="relative inline-flex items-center justify-center" style={{ width: size, height: size }}>
         <AssetImage
-          src={iconAssets.timerRing}
+          src={ASSETS.ui.timerRing}
           alt=""
           className="absolute inset-0 h-full w-full object-contain"
           fallback={

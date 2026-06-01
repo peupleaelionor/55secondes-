@@ -33,7 +33,7 @@ import { Disclaimer } from "@/components/layout/Disclaimer";
 import { RARITY_STYLE } from "@/components/game/BadgeCard";
 import { Icon } from "@/components/Icon";
 import { AssetImage } from "@/components/AssetImage";
-import { badgeAssets } from "@/lib/assets";
+import { getBadgeArt } from "@/lib/assets";
 import { getResultAnalysis, getResultTitle } from "@/lib/game/scoring";
 import { computeDecisionDNA, dominantSkill } from "@/lib/game/dna";
 import { computeArchetype } from "@/lib/game/archetypes";
@@ -254,9 +254,9 @@ export default function ResultPage() {
           aria-label={`Badge débloqué : ${topNewBadge.name}`}
         >
           <GlassCard className="flex items-center gap-3 p-3 ring-1 ring-violet/40">
-            {badgeAssets[topNewBadge.id] ? (
+            {getBadgeArt(topNewBadge.id) ? (
               <AssetImage
-                src={badgeAssets[topNewBadge.id]}
+                src={getBadgeArt(topNewBadge.id)!}
                 alt={topNewBadge.name}
                 className="h-12 w-12 object-contain"
                 fallback={

@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import type { Badge, Rarity } from "@/lib/game/types";
 import { Icon } from "@/components/Icon";
 import { AssetImage } from "@/components/AssetImage";
-import { badgeAssets } from "@/lib/assets";
+import { getBadgeArt } from "@/lib/assets";
 
 interface Props {
   badge: Badge;
@@ -21,7 +21,7 @@ export const RARITY_STYLE: Record<Rarity, { ring: string; text: string; glow: st
 
 export function BadgeCard({ badge, unlocked = true, reveal }: Props) {
   const style = RARITY_STYLE[badge.rarity];
-  const art = badgeAssets[badge.id];
+  const art = getBadgeArt(badge.id);
   return (
     <motion.div
       initial={reveal ? { scale: 0.85, opacity: 0 } : false}
