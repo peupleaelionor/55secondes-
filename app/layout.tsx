@@ -12,6 +12,10 @@ export const metadata: Metadata = {
   description: DESCRIPTION,
   applicationName: "55 Seconds",
   manifest: "/manifest.json",
+  icons: {
+    icon: "/assets/icons/app-icon.png",
+    apple: "/assets/icons/app-icon.png",
+  },
   appleWebApp: {
     capable: true,
     statusBarStyle: "black-translucent",

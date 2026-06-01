@@ -3,6 +3,8 @@
 import { motion } from "framer-motion";
 import type { Badge, Rarity } from "@/lib/game/types";
 import { Icon } from "@/components/Icon";
+import { AssetImage } from "@/components/AssetImage";
+import { badgeAssets } from "@/lib/assets";
 
 interface Props {
   badge: Badge;
@@ -19,6 +21,7 @@ export const RARITY_STYLE: Record<Rarity, { ring: string; text: string; glow: st
 
 export function BadgeCard({ badge, unlocked = true, reveal }: Props) {
   const style = RARITY_STYLE[badge.rarity];
+  const art = badgeAssets[badge.id];
   return (
     <motion.div
       initial={reveal ? { scale: 0.85, opacity: 0 } : false}
@@ -26,11 +29,26 @@ export function BadgeCard({ badge, unlocked = true, reveal }: Props) {
       transition={{ type: "spring", stiffness: 320, damping: 18 }}
       className={`glass flex flex-col items-center gap-2 rounded-2xl p-3 text-center ${unlocked ? "" : "opacity-40 grayscale"}`}
     >
-      <div
-        className={`flex h-12 w-12 items-center justify-center rounded-xl bg-violet/12 ring-1 ${style.ring} ${unlocked ? style.glow : ""}`}
-      >
-        <Icon name={badge.icon} className={`h-6 w-6 ${style.text}`} />
-      </div>
+      {art ? (
+        <AssetImage
+          src={art}
+          alt={badge.name}
+          className={`h-12 w-12 object-contain ${unlocked ? "" : ""}`}
+          fallback={
+            <div
+              className={`flex h-12 w-12 items-center justify-center rounded-xl bg-violet/12 ring-1 ${style.ring} ${unlocked ? style.glow : ""}`}
+            >
+              <Icon name={badge.icon} className={`h-6 w-6 ${style.text}`} />
+            </div>
+          }
+        />
+      ) : (
+        <div
+          className={`flex h-12 w-12 items-center justify-center rounded-xl bg-violet/12 ring-1 ${style.ring} ${unlocked ? style.glow : ""}`}
+        >
+          <Icon name={badge.icon} className={`h-6 w-6 ${style.text}`} />
+        </div>
+      )}
       <p className="text-xs font-bold leading-tight">{badge.name}</p>
       <p className="text-[10px] uppercase tracking-wider text-ink-muted">{badge.rarity}</p>
     </motion.div>

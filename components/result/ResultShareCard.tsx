@@ -3,6 +3,8 @@
 import { forwardRef } from "react";
 import type { Archetype } from "@/lib/game/archetypes";
 import { formatNumber } from "@/lib/format";
+import { AssetImage } from "@/components/AssetImage";
+import { iconAssets } from "@/lib/assets";
 
 interface Props {
   score: number;
@@ -32,6 +34,12 @@ export const ResultShareCard = forwardRef<HTMLDivElement, Props>(function Result
         className="pointer-events-none absolute -left-10 bottom-10 h-48 w-48 rounded-full opacity-40 blur-3xl"
         style={{ backgroundImage: `linear-gradient(135deg, ${archetype.gradient[0]}, ${archetype.gradient[1]})` }}
         aria-hidden
+      />
+      <AssetImage
+        src={iconAssets.rocket}
+        alt=""
+        className="pointer-events-none absolute right-3 top-10 h-20 w-20 object-contain opacity-90"
+        fallback={null}
       />
       <div className="relative flex h-full flex-col">
         <p className="text-sm font-extrabold italic tracking-tight">

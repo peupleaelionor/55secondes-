@@ -130,6 +130,24 @@ Les images ne sont **pas** commitées : déposez-les dans `public/assets/**` (vo
 `lib/assets.ts` pour le mapping). Tant qu'une image est absente, l'UI utilise des
 placeholders CSS/SVG — rien ne casse.
 
+### Fichiers attendus (drop-in, l'UI les détecte automatiquement)
+
+| Fichier                                   | Usage                                  |
+| ----------------------------------------- | -------------------------------------- |
+| `public/assets/icons/app-icon.png`        | Favicon, icône Apple/PWA               |
+| `public/assets/icons/timer-ring.png`      | Anneau du chrono sur l'accueil         |
+| `public/assets/icons/rocket.png`          | Carte de partage (résultat)            |
+| `public/assets/og/hero.png`               | Fond ambiant 9:16 de l'accueil         |
+| `public/assets/badges/entrepreneur.png`   | Badge « Entrepreneur validé »          |
+| `public/assets/badges/banquier.png`       | Badge « Banquier impressionné »        |
+| `public/assets/badges/cashflow.png`       | Badge « Cashflow propre »              |
+| `public/assets/badges/roi-du-flux.png`    | Badge « Roi du flux »                  |
+| `public/assets/badges/risque-maitrise.png`| Badge « Risque maîtrisé »              |
+| `public/assets/badges/momentum-royal.png` | Badge « Momentum royal »               |
+
+> Les PNG doivent être **sans filigrane** et, pour les badges/icônes, à **fond
+> transparent**. Format carré pour icônes/badges, 9:16 pour le hero.
+
 Prompts recommandés (image model type Gemini / Midjourney) :
 
 - **A. App icon** — `Premium mobile game app icon for "55 Seconds", dark navy black background, glowing electric purple number 55, circular timer ring, fintech gaming aesthetic, high contrast, minimal, luxury, no text except 55, iOS app icon, 1024x1024, clean vector-like 3D glow.`

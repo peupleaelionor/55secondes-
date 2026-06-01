@@ -32,6 +32,8 @@ import { Confetti } from "@/components/ui/Confetti";
 import { Disclaimer } from "@/components/layout/Disclaimer";
 import { RARITY_STYLE } from "@/components/game/BadgeCard";
 import { Icon } from "@/components/Icon";
+import { AssetImage } from "@/components/AssetImage";
+import { badgeAssets } from "@/lib/assets";
 import { getResultAnalysis, getResultTitle } from "@/lib/game/scoring";
 import { computeDecisionDNA, dominantSkill } from "@/lib/game/dna";
 import { computeArchetype } from "@/lib/game/archetypes";
@@ -252,11 +254,26 @@ export default function ResultPage() {
           aria-label={`Badge débloqué : ${topNewBadge.name}`}
         >
           <GlassCard className="flex items-center gap-3 p-3 ring-1 ring-violet/40">
-            <div
-              className={`flex h-12 w-12 items-center justify-center rounded-xl bg-violet/12 ring-1 ${RARITY_STYLE[topNewBadge.rarity].ring} shadow-glow`}
-            >
-              <Icon name={topNewBadge.icon} className={`h-6 w-6 ${RARITY_STYLE[topNewBadge.rarity].text}`} />
-            </div>
+            {badgeAssets[topNewBadge.id] ? (
+              <AssetImage
+                src={badgeAssets[topNewBadge.id]}
+                alt={topNewBadge.name}
+                className="h-12 w-12 object-contain"
+                fallback={
+                  <div
+                    className={`flex h-12 w-12 items-center justify-center rounded-xl bg-violet/12 ring-1 ${RARITY_STYLE[topNewBadge.rarity].ring} shadow-glow`}
+                  >
+                    <Icon name={topNewBadge.icon} className={`h-6 w-6 ${RARITY_STYLE[topNewBadge.rarity].text}`} />
+                  </div>
+                }
+              />
+            ) : (
+              <div
+                className={`flex h-12 w-12 items-center justify-center rounded-xl bg-violet/12 ring-1 ${RARITY_STYLE[topNewBadge.rarity].ring} shadow-glow`}
+              >
+                <Icon name={topNewBadge.icon} className={`h-6 w-6 ${RARITY_STYLE[topNewBadge.rarity].text}`} />
+              </div>
+            )}
             <div className="flex-1">
               <p className="text-[11px] font-semibold uppercase tracking-widest text-violet-light">
                 Nouveau badge débloqué

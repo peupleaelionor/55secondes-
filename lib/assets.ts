@@ -10,6 +10,8 @@
 export const ogAssets = {
   default: "/assets/og/og-default.png",
   story: "/assets/og/story-teaser.png",
+  /** 9:16 hero/ambient background. */
+  hero: "/assets/og/hero.png",
 } as const;
 
 export const textureAssets = {
@@ -28,6 +30,8 @@ export const badgeAssets: Record<string, string> = {
   banquier: "/assets/badges/banquier.png",
   cashflow: "/assets/badges/cashflow.png",
   roiduflux: "/assets/badges/roi-du-flux.png",
+  risquemaitrise: "/assets/badges/risque-maitrise.png",
+  momentumroyal: "/assets/badges/momentum-royal.png",
 };
 
 /** Leaderboard avatar seed → optional image. Falls back to initials bubble. */
