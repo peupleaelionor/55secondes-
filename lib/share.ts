@@ -12,6 +12,7 @@ export interface ShareData {
   flow: number;
   badgeName?: string | null;
   archetype?: string | null;
+  rank?: string | null;
 }
 
 const fmt = (n: number) =>
@@ -29,18 +30,18 @@ export const SHARE_LABELS: Record<ShareVariant, string> = {
 export function getShareText(data: ShareData, variant: ShareVariant = 1): string {
   switch (variant) {
     case 2:
-      return `55 secondes. 100 décisions sous pression.\nScore : ${data.score}/100.\nTu crois avoir l'instinct ? Prouve-le. (jeu 55 Seconds)`;
+      return `55 secondes. Des décisions sous pression. Un seul score.\nMoi : ${data.score}/100 sur 55 Seconds.\nTu crois avoir l'instinct ? Prouve-le.`;
     case 3:
-      return `Mon profil business : ${data.archetype ?? "Décideur"}.\nDécouvert en 55 secondes, score ${data.score}/100.\nEt toi ?`;
+      return `Mon profil business : ${data.archetype ?? "Décideur"}.\nRévélé en 55 secondes — score ${data.score}/100 sur 55 Seconds.\nEt toi, c'est quoi le tien ?`;
     case 4:
-      return `Badge débloqué : ${data.badgeName ?? "secret"} sur 55 Seconds.\nPeu de joueurs l'obtiennent. Score ${data.score}/100.`;
+      return `Badge débloqué : ${data.badgeName ?? "secret"} sur 55 Seconds.\nPeu de joueurs l'obtiennent. Score ${data.score}/100.\nÀ toi de jouer.`;
     case 5:
-      return `Je t'ai lancé un défi sur 55 Seconds. Même chrono, mêmes décisions.\nMon score : ${data.score}/100. Tu fais mieux ?`;
+      return `Je te défie sur 55 Seconds : même chrono, mêmes décisions.\nMon score à battre : ${data.score}/100.\nTu fais mieux ?`;
     case 1:
     default:
-      return `Score : ${data.score}/100 sur 55 Seconds.\n0,18 € → ${fmt(
+      return `${data.score}/100 sur 55 Seconds${data.rank ? ` — rang ${data.rank}` : ""}.\n0,18 € → ${fmt(
         data.flow,
-      )} € de flux fictif en 55 secondes.\nTu fais mieux ?`;
+      )} € de flux (fictif) en 55 secondes.\nTu fais mieux ?`;
   }
 }
 

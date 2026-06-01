@@ -5,7 +5,7 @@ import { ASSETS } from "@/lib/assets";
 
 const TITLE = "55 Seconds — Le jeu du profil finançable";
 const DESCRIPTION =
-  "Transforme 0,18 € en profil finançable en 55 secondes dans un jeu de stratégie entrepreneuriale rapide, social et addictif. Simulation fictive, réflexes réels.";
+  "55 secondes pour révéler ton instinct business. Prends des décisions sous pression, crée du flux et débloque ton profil finançable. Jeu de simulation : fictif, mais tes réflexes sont réels.";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://55seconds.app"),

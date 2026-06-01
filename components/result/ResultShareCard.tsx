@@ -11,6 +11,7 @@ interface Props {
   flow: number;
   archetype: Archetype;
   badgeName?: string | null;
+  rank?: { label: string; color: string } | null;
 }
 
 /**
@@ -18,7 +19,7 @@ interface Props {
  * future canvas/image export can render it off-screen unchanged.
  */
 export const ResultShareCard = forwardRef<HTMLDivElement, Props>(function ResultShareCard(
-  { score, flow, archetype, badgeName },
+  { score, flow, archetype, badgeName, rank },
   ref,
 ) {
   return (
@@ -52,6 +53,13 @@ export const ResultShareCard = forwardRef<HTMLDivElement, Props>(function Result
           </p>
           <p className="text-7xl font-extrabold italic leading-none tabular-nums">{score}</p>
           <p className="text-sm font-semibold text-violet-light">/100</p>
+
+          {rank && (
+            <p className="mt-2 inline-block rounded-full px-3 py-1 text-xs font-bold ring-1"
+              style={{ color: rank.color, borderColor: `${rank.color}66` }}>
+              {rank.label}
+            </p>
+          )}
 
           <p className="mt-4 text-xs font-semibold uppercase tracking-widest text-ink-muted">
             Profil

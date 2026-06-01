@@ -2,13 +2,14 @@
 
 import { useMemo } from "react";
 import { useRouter } from "next/navigation";
-import { Rocket, Check, Clock, Sparkles, GraduationCap } from "lucide-react";
+import { Rocket, Check, Clock, Sparkles } from "lucide-react";
 import { TopBar } from "@/components/layout/TopBar";
 import { GlassCard } from "@/components/ui/GlassCard";
 import { GlowButton } from "@/components/ui/GlowButton";
 import { Icon } from "@/components/Icon";
 import { Disclaimer } from "@/components/layout/Disclaimer";
 import { getDailyChallenges, getDailyPulse, timeUntilReset } from "@/lib/game/daily";
+import { GAME_MODES } from "@/lib/game/modes";
 import type { DailyChallenge } from "@/lib/game/types";
 
 export default function DailyPage() {
@@ -44,21 +45,46 @@ export default function DailyPage() {
         Lancer une partie
       </GlowButton>
 
-      {/* Training mode teaser (architecture ready) */}
-      <GlassCard className="flex items-center gap-3 p-4 opacity-90">
-        <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-violet/15 ring-1 ring-violet/30">
-          <GraduationCap className="h-6 w-6 text-violet-light" />
+      {/* Modes */}
+      <section>
+        <h3 className="mb-2 text-lg font-bold">Modes</h3>
+        <div className="space-y-2">
+          {GAME_MODES.map((m) => {
+            const content = (
+              <GlassCard
+                className={`flex items-center gap-3 p-3 ${m.available ? "" : "opacity-70"}`}
+              >
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-violet/12 ring-1 ring-violet/30">
+                  <Icon name={m.icon} className="h-5 w-5 text-violet-light" />
+                </div>
+                <div className="min-w-0 flex-1">
+                  <p className="font-semibold">{m.name}</p>
+                  <p className="truncate text-sm text-ink-muted">{m.tagline}</p>
+                </div>
+                {!m.available && (
+                  <span className="rounded-full bg-white/[0.06] px-3 py-1 text-xs font-semibold text-ink-muted">
+                    Bientôt
+                  </span>
+                )}
+              </GlassCard>
+            );
+            return m.available ? (
+              <button
+                key={m.id}
+                onClick={() => router.push("/play")}
+                className="block w-full text-left"
+                aria-label={`${m.name} — ${m.tagline}`}
+              >
+                {content}
+              </button>
+            ) : (
+              <div key={m.id} aria-label={`${m.name} — bientôt disponible`}>
+                {content}
+              </div>
+            );
+          })}
         </div>
-        <div className="flex-1">
-          <p className="font-bold">Mode entraînement</p>
-          <p className="text-sm text-ink-muted">
-            Sans chrono, avec explications après chaque choix. Plus utile, moins viral.
-          </p>
-        </div>
-        <span className="rounded-full bg-white/[0.06] px-3 py-1 text-xs font-semibold text-ink-muted">
-          Bientôt
-        </span>
-      </GlassCard>
+      </section>
 
       <Disclaimer />
     </div>

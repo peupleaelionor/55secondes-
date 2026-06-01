@@ -32,12 +32,12 @@ export const PLANS: Plan[] = [
   {
     id: "pro",
     name: "Pro",
-    tagline: "Analyse tes décisions. Va plus loin.",
+    tagline: "Comprends comment tu décides.",
     features: [
-      "Decision DNA détaillé + historique",
+      "ADN business détaillé + historique de tes parties",
       "Archétypes rares",
       "Packs de scénarios avancés",
-      "Mode entraînement",
+      "Mode entraînement (sans chrono)",
       "Cartes de partage premium",
       "Statistiques approfondies",
     ],
@@ -61,6 +61,6 @@ export const PLANS: Plan[] = [
 
 export const PRO_PITCH = {
   title: "Passe Pro bientôt",
-  body: "Analyse tes décisions. Débloque les scénarios avancés. Construis ton profil business.",
+  body: "Analyse fine de tes décisions, scénarios avancés et mode entraînement. Pour celles et ceux qui veulent vraiment progresser.",
   cta: "Rejoindre la liste Founder",
 };

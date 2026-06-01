@@ -8,8 +8,10 @@ et addictif.
 
 En 55 secondes, tu prends des décisions, tu crées du flux **fictif**, tu
 maîtrises le risque et tu découvres ton style entrepreneurial. Tu finis avec un
-score, un **ADN business**, un **archétype**, des badges, et une carte
-partageable pour défier tes amis.
+**score**, un **rang**, un **ADN business**, un **archétype**, des **badges**,
+et une **carte partageable** pour défier tes amis.
+
+> 55 secondes pour prouver ton réflexe, ta précision et ton sang-froid.
 
 ---
 
@@ -58,6 +60,9 @@ Ouvre http://localhost:3000.
 | `npm run build` | Build de production                  |
 | `npm run start` | Sert le build de production          |
 | `npm run lint`  | ESLint (next/core-web-vitals)        |
+| `npm run check:assets` | Vérifie que les chemins d'assets existent (fallback toléré) |
+
+> `pnpm` est aussi supporté (`pnpm dev` / `pnpm build` / `pnpm lint`).
 
 ## 🗂 Structure
 
@@ -73,11 +78,13 @@ components/
   ui/                GlassCard, GlowButton, GameToast, Confetti
 lib/
   game/              types, scenarios (40+), badges, engine, scoring, dna,
-                     archetypes, levels, daily, seed, packs, mockLeaderboard
+                     archetypes, levels, ranks, modes, daily, seed, packs,
+                     mockLeaderboard
   storage, analytics, assets, share, format, haptics, plans, features
 store/               gameStore, profileStore, toastStore
+scripts/             check-assets.mjs
 public/
-  assets/            avatars, badges, icons, og, textures (placeholders)
+  assets/            app-icon.png, badges/, avatars/, story/, og/, ui/
   sounds/            click, success, risk, win, lose, badge (optional)
 ```
 
@@ -93,6 +100,10 @@ public/
   risque, négociation, régularité, lecture d'opportunité, cashflow, confiance,
   exécution) → **archétype** (`lib/game/archetypes.ts`).
 - **Progression** (`lib/game/levels.ts`) : XP & niveaux non frustrants.
+- **Rangs** (`lib/game/ranks.ts`) : 8 paliers (Bronze Pulse → Eclipse Master)
+  mappés sur le score, affichés au résultat, au profil et dans le partage.
+- **Modes** (`lib/game/modes.ts`) : Classic 55, Daily, Duel actifs ; Reflex
+  Rush, Precision, Zen et arènes thématiques préparés (types + copy).
 - **Défis du jour** (`lib/game/daily.ts`) : seed déterministe par date,
   progression stockée localement, « Daily Pulse ».
 - **Challenge seed** (`lib/game/seed.ts`) : un ami peut rejouer le même ordre de
@@ -100,29 +111,39 @@ public/
 
 ## 🗺 Roadmap
 
-**V1 (actuelle)** — jeu local, score, ADN business, archétypes, badges, niveaux,
-classement mock, partage viral (5 variantes), défis quotidiens, défi par seed,
-pages legal/privacy, données locales effaçables.
+**V1 — Core (actuelle)** — Classic 55, score, meilleur score, **rangs**, badges,
+ADN business, archétypes, partage (5 variantes + carte). Données locales.
 
-**V2** — comptes utilisateurs, leaderboard réel (backend), génération d'image
-partageable, nouveaux scénarios, mode amis, analytics produit (avec
-consentement).
+**V2 — Rétention** — Daily Challenge enrichi, séries, historique de parties,
+missions, carte de score exportable en image.
 
-**V3** — mode équipe, scénarios sponsorisés, packs premium, tournoi
-hebdomadaire, PWA offline.
+**V3 — Social** — liens de duel, leaderboard en ligne, profil joueur public,
+challenges communautaires.
 
-**V4** — app mobile native, haptics avancés, skins premium, traduction EN,
-moteur de scénarios IA contrôlé.
+**V4 — B2B** — challenge sponsorisé, QR code, branding léger, analytics, export
+des participants.
 
-## 💼 B2B Potential
+**V5 — Planet Modes** — Neon Mars, Saturn Loop, Jupiter Crown, Eclipse Arena et
+événements saisonniers (architecture préparée dans `lib/game/modes.ts`).
 
-55 Seconds peut devenir : un outil d'icebreaker entrepreneurial, un mini serious
-game pour incubateurs, un entraînement décisionnel pour étudiants, un challenge
-pour communautés business, un outil viral pour créateurs.
+## 💼 B2B
 
-Monétisation B2B future (architecture seulement, pas de backend en V1) : licence
-école, dashboard formateur, challenges privés, classement de cohorte, packs
-sectoriels, export de résultats.
+Un mini-challenge de 55 secondes pour **engager une communauté, animer un
+événement ou collecter des participations**. Cas d'usage : animation de
+communauté, jeu concours, activation de marque, salon/événement, challenge
+interne, campagne TikTok/Instagram, collecte d'emails opt-in, leaderboard
+sponsorisé, QR code vers un challenge personnalisé.
+
+Offres envisagées (architecture seulement, pas de backend en V1) :
+
+| Offre              | Contenu                                                       |
+| ------------------ | ------------------------------------------------------------- |
+| Starter Challenge  | Logo + leaderboard + lien partageable                         |
+| Event Challenge    | QR code + classement live + export des résultats              |
+| Brand Arena        | Thème visuel + badges sponsorisés + analytics                 |
+| Community League   | Saison de 7 jours + récompenses + classement                  |
+
+Un teaser « Équipes & communautés » est déjà présent, discrètement, sur l'accueil.
 
 ## 🎨 Assets
 
