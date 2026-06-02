@@ -17,7 +17,7 @@ export function getResultAnalysis(state: GameState): ResultAnalysis {
     return {
       headline: "Profil bloqué.",
       detail:
-        "Tu as poussé trop fort. Dans le jeu, une croissance sans contrôle finit par tout figer.",
+        "Trop de pression, trop vite. Dans le jeu, une croissance sans garde-fou finit par tout figer.",
     };
   }
 
@@ -25,22 +25,22 @@ export function getResultAnalysis(state: GameState): ResultAnalysis {
     return {
       headline: "Tu as poussé trop fort.",
       detail:
-        "La croissance rapide sans contrôle coûte cher. Vise plus de régularité au prochain run.",
+        "Le flux était là, mais ton risque a flambé. Garde la même intensité avec plus de sang-froid.",
     };
   }
 
   if (state.confidence < 50) {
     return {
-      headline: "Ton profil manque de confiance.",
-      detail: "Privilégie les choix plus propres pour rassurer ton profil de jeu.",
+      headline: "Profil pas encore crédible.",
+      detail: "Privilégie des choix plus propres : la confiance, c'est ce qui débloque ton profil.",
     };
   }
 
   if (score > 90) {
     return {
-      headline: "Profil très propre.",
+      headline: "Partie quasi parfaite.",
       detail:
-        "Tu as combiné vitesse, confiance et risque maîtrisé. Run quasi parfait.",
+        "Vitesse, confiance et risque maîtrisé : tu as tout aligné. Peu de joueurs y arrivent.",
     };
   }
 
@@ -48,21 +48,21 @@ export function getResultAnalysis(state: GameState): ResultAnalysis {
     return {
       headline: "Solide.",
       detail:
-        "Tu as créé du flux crédible, mais tu peux encore optimiser le risque.",
+        "Du flux crédible et un profil sain. Serre le risque d'un cran et le score s'envole.",
     };
   }
 
   if (score >= 40) {
     return {
-      headline: "Du mouvement, mais pas d'équilibre.",
+      headline: "Du mouvement, pas encore l'équilibre.",
       detail:
-        "Tu as généré de l'activité ; ton profil manque encore de cohérence.",
+        "Tu crées de l'activité, mais ton profil manque de cohérence. Vise une dimension à la fois.",
     };
   }
 
   return {
-    headline: "Trop de dispersion.",
-    detail: "Rejoue avec moins de risque et plus de régularité dans tes choix.",
+    headline: "Trop dispersé.",
+    detail: "Moins de risque, plus de régularité. Une partie propre vaut mieux qu'une partie agressive.",
   };
 }
 
@@ -76,7 +76,7 @@ export function getResultTitle(state: GameState): { title: string; subtitle: str
   }
   return {
     title: "Profil encore fragile",
-    subtitle: "Tu étais proche. Rejoue avec une meilleure stratégie.",
+    subtitle: "Tu y étais presque. Affine ta stratégie et retente.",
   };
 }
 

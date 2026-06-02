@@ -33,9 +33,9 @@ const OBJECTIVES = [
 ];
 
 const STEPS = [
-  { icon: Wallet, title: "Démarre", text: "Tu commences avec 0,18 € sur ton compte virtuel." },
-  { icon: TrendingUp, title: "Génère du flux", text: "Enchaîne des décisions malines pour créer du flux fictif." },
-  { icon: ShieldCheck, title: "Atteins les objectifs", text: "Solde, flux, transactions : remplis les conditions avant 55 secondes." },
+  { icon: Wallet, title: "Tu démarres à 0,18 €", text: "Un compte fictif, un chrono de 55 secondes." },
+  { icon: TrendingUp, title: "Tu génères du flux", text: "Chaque décision fait bouger ton solde, ta confiance et ton risque." },
+  { icon: ShieldCheck, title: "Tu débloques ton profil", text: "Atteins les objectifs sans faire flamber le risque. Puis tu rejoues pour battre ton score." },
 ];
 
 export default function HomePage() {
@@ -53,8 +53,8 @@ export default function HomePage() {
       <TopBar left={<Logo />} />
 
       <p className="text-lg text-ink-muted">
-        55 secondes pour tester ton instinct business.{" "}
-        <span className="font-semibold text-violet-light">Simulation fictive, stratégie réelle.</span>
+        55 secondes pour révéler ton instinct business.{" "}
+        <span className="font-semibold text-violet-light">Simulation fictive, décisions réelles.</span>
       </p>
 
       {/* Objective card */}
@@ -68,8 +68,8 @@ export default function HomePage() {
               Deviens finançable en <span className="text-violet-light">55 secondes.</span>
             </h2>
             <p className="mt-2 text-sm text-ink-muted">
-              Atteins les 4 objectifs avant la fin du chrono pour débloquer ton profil
-              finançable — dans le jeu.
+              Quatre objectifs. Un chrono. Atteins-les sans faire flamber ton risque
+              pour débloquer ton profil finançable — dans le jeu.
             </p>
           </div>
           <div className="hidden shrink-0 sm:block">
@@ -139,23 +139,22 @@ export default function HomePage() {
 
       <GlassCard className="flex items-center gap-2 p-3 text-sm text-ink-muted">
         <Users className="h-4 w-4 shrink-0 text-violet-light" />
-        Rejoins des milliers de joueurs et tente le défi{" "}
-        <span className="font-semibold text-ink">chaque jour.</span>
+        Un nouveau défi <span className="font-semibold text-ink">chaque jour</span>. Reviens, garde ta série, grimpe au classement.
       </GlassCard>
 
-      {/* Below the fold — investor / partner framing */}
+      {/* Below the fold — product / partner framing */}
       <section className="space-y-3 pt-2">
         <InfoBlock
-          title="Pourquoi ça marche"
-          text="Une partie courte, une boucle virale, une progression infinie. On rejoue pour battre son score, on partage pour défier ses amis."
+          title="Pourquoi on revient"
+          text="Une partie dure 55 secondes. Assez court pour rejouer, assez serré pour vouloir battre son score. Série quotidienne, niveaux et badges rares entretiennent l'envie."
         />
         <InfoBlock
           title="Pour qui"
-          text="Freelances, créateurs, étudiants, entrepreneurs et incubateurs qui veulent aiguiser leurs réflexes de décision."
+          text="Freelances, créateurs, étudiants, entrepreneurs — et toute communauté qui aime se mesurer. Pas besoin d'être expert : on comprend en 5 secondes."
         />
         <InfoBlock
-          title="Ce que le jeu mesure"
-          text="Vitesse, risque, confiance, négociation et régularité. Le score n'est pas qu'un chiffre : c'est un miroir de tes réflexes business."
+          title="Ce que le jeu révèle"
+          text="Vitesse, risque, confiance, négociation, régularité. À la fin, ton ADN business et ton archétype. Un score à partager, un profil à défendre."
         />
         <Link
           href="/skills"
@@ -164,6 +163,26 @@ export default function HomePage() {
           Les réflexes que tu entraînes
           <ChevronRight className="h-4 w-4" />
         </Link>
+      </section>
+
+      {/* For teams & communities (B2B) */}
+      <section className="pt-1">
+        <GlassCard strong className="space-y-2 p-4">
+          <div className="flex items-center gap-2">
+            <Users className="h-4 w-4 text-violet-light" />
+            <p className="text-[11px] font-semibold uppercase tracking-widest text-violet-light">
+              Équipes & communautés
+            </p>
+          </div>
+          <p className="text-sm text-ink-muted">
+            Idéal pour animer une communauté ou lancer un challenge interne : même
+            chrono, mêmes décisions, classement partagé. Parfait en icebreaker,
+            en événement ou en concours d&apos;engagement.
+          </p>
+          <p className="text-xs text-ink-muted/70">
+            Cohortes, classements privés et défis sur mesure — sur demande.
+          </p>
+        </GlassCard>
       </section>
 
       <Disclaimer />

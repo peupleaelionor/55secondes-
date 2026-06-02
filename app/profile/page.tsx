@@ -31,6 +31,7 @@ import { useToastStore } from "@/store/toastStore";
 import { BADGES } from "@/lib/game/badges";
 import { ARCHETYPES } from "@/lib/game/archetypes";
 import { levelFromXp } from "@/lib/game/levels";
+import { getRank } from "@/lib/game/ranks";
 import { PRO_PITCH } from "@/lib/plans";
 import { formatEuro, formatNumber } from "@/lib/format";
 import { track } from "@/lib/analytics";
@@ -50,6 +51,7 @@ export default function ProfilePage() {
   const [confirmReset, setConfirmReset] = useState(false);
 
   const level = levelFromXp(profile.xp);
+  const bestRank = getRank(profile.bestScore);
   const ownedBadges = new Set(profile.badges);
   const archetype = profile.topArchetype ? ARCHETYPES[profile.topArchetype] : null;
 
@@ -106,6 +108,15 @@ export default function ProfilePage() {
             <p className="text-sm text-violet-light">
               Niveau {level.level} · {level.title}
             </p>
+            {profile.bestScore > 0 && (
+              <span
+                className="mt-1 inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 text-xs font-bold ring-1"
+                style={{ color: bestRank.color, borderColor: `${bestRank.color}55` }}
+              >
+                <Crown className="h-3 w-3" style={{ color: bestRank.color }} />
+                {bestRank.label}
+              </span>
+            )}
           </div>
           <div className="flex items-center gap-1 rounded-full bg-white/[0.04] px-3 py-1.5">
             <Flame className="h-4 w-4 text-warn" />
@@ -175,7 +186,7 @@ export default function ProfilePage() {
           className="w-full py-3 text-sm"
           onClick={() => {
             track("founder_waitlist_clicked");
-            push("Tu es sur la liste Founder (V1 locale)", "win");
+            push("Tu es sur la liste Founder. Merci.", "win");
           }}
         >
           {PRO_PITCH.cta}

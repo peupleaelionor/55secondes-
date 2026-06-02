@@ -16,6 +16,7 @@ import {
   Swords,
   ChevronRight,
   Sparkles,
+  Crown,
 } from "lucide-react";
 import { useGameStore } from "@/store/gameStore";
 import { useProfileStore } from "@/store/profileStore";
@@ -38,6 +39,7 @@ import { getResultAnalysis, getResultTitle } from "@/lib/game/scoring";
 import { computeDecisionDNA, dominantSkill } from "@/lib/game/dna";
 import { computeArchetype } from "@/lib/game/archetypes";
 import { getBadge } from "@/lib/game/badges";
+import { getRank, getNextRank, pointsToNextRank } from "@/lib/game/ranks";
 import { getShareText, shareText, type ShareVariant, SHARE_LABELS } from "@/lib/share";
 import { createChallengeSeed, buildChallengeUrl } from "@/lib/game/seed";
 import { xpForGame, XP_REWARDS } from "@/lib/game/levels";
@@ -67,6 +69,9 @@ export default function ResultPage() {
   }, [state]);
 
   const titleInfo = getResultTitle(state);
+  const rank = getRank(state.finalScore);
+  const nextRank = getNextRank(state.finalScore);
+  const toNext = pointsToNextRank(state.finalScore);
   const topNewBadge = newBadges
     .map((id) => getBadge(id))
     .filter(Boolean)
@@ -82,6 +87,7 @@ export default function ResultPage() {
     flow: state.incomingFlow,
     badgeName: topNewBadge?.name ?? null,
     archetype: archetype.name,
+    rank: rank.label,
   };
 
   const grantShareXpOnce = () => {
@@ -144,6 +150,18 @@ export default function ResultPage() {
           {won ? <span className="text-gradient-violet">{titleInfo.title}</span> : titleInfo.title}
         </h2>
         <p className="text-sm text-ink-muted">{titleInfo.subtitle}</p>
+
+        {/* Rank */}
+        <div
+          className="mt-3 inline-flex items-center gap-2 rounded-full px-4 py-1.5 ring-1"
+          style={{ borderColor: `${rank.color}55`, color: rank.color, boxShadow: `0 0 18px ${rank.color}33` }}
+        >
+          <Crown className="h-4 w-4" style={{ color: rank.color }} />
+          <span className="text-sm font-bold">Rang {rank.label}</span>
+        </div>
+        <p className="mt-1 text-xs text-ink-muted">
+          {nextRank ? `${rank.message} · +${toNext} pts → ${nextRank.label}` : rank.message}
+        </p>
       </div>
 
       {/* Score + stats */}
@@ -225,6 +243,7 @@ export default function ResultPage() {
         flow={state.incomingFlow}
         archetype={archetype}
         badgeName={topNewBadge?.name ?? null}
+        rank={{ label: rank.label, color: rank.color }}
       />
 
       {/* Next best action */}

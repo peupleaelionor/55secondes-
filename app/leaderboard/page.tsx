@@ -103,7 +103,7 @@ export default function LeaderboardPage() {
       <LeaderboardList entries={list} />
 
       <p className="text-center text-[11px] text-ink-muted/70">
-        Classement fictif (V1). Le classement en ligne arrive bientôt.
+        Classement de démonstration. Le classement en ligne arrive bientôt.
       </p>
 
       {/* Daily challenge call-out */}

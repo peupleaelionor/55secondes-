@@ -1,10 +1,10 @@
 /**
  * Central asset mapping — the single source of truth for every asset path.
- * Never hardcode an "/assets/..." path in a component; import from here.
+ * Import paths from here; never write a raw public path inside a component.
  *
- * Images live under /public/assets/** and are loaded via <AssetImage>, which
- * falls back to a clean CSS/SVG placeholder when a file is missing. A missing
- * asset therefore never breaks the build or the UI.
+ * Images live under public/assets and are loaded via <AssetImage>, which falls
+ * back to a clean CSS/SVG placeholder when a file is missing. A missing asset
+ * therefore never breaks the build or the UI.
  */
 
 export const ASSETS = {
@@ -29,9 +29,9 @@ export const ASSETS = {
   },
   ui: {
     badgeFrame: "/assets/ui/badge-frame.png",
-    /** Optional — falls back to the animated SVG ring when absent. */
+    // Optional — falls back to the animated SVG ring when absent.
     timerRing: "/assets/ui/timer-ring.png",
-    /** Rocket art reused on the share card. */
+    // Rocket art reused on the share card.
     rocket: "/assets/badges/rocket-boost.png",
   },
   sounds: {
@@ -45,7 +45,7 @@ export const ASSETS = {
 } as const;
 
 /**
- * Badge id (see lib/game/badges.ts) → illustration path. Unmapped ids fall
+ * Badge id (see lib/game/badges.ts) -> illustration path. Unmapped ids fall
  * back to their Lucide glyph in <BadgeCard>.
  */
 export const BADGE_ART: Record<string, string> = {

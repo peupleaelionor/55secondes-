@@ -6,9 +6,9 @@ import { useProfileStore } from "@/store/profileStore";
 import { GlowButton } from "@/components/ui/GlowButton";
 
 const STEPS = [
-  { icon: Zap, title: "Choisis vite.", text: "55 secondes. Chaque décision compte." },
-  { icon: TrendingUp, title: "Génère du flux.", text: "Crée du flux fictif et enchaîne les séries." },
-  { icon: ShieldCheck, title: "Maîtrise le risque.", text: "Reste crédible pour débloquer ton profil." },
+  { icon: Zap, title: "Décide vite.", text: "55 secondes, pas une de plus. Chaque choix compte." },
+  { icon: TrendingUp, title: "Crée du flux.", text: "Enchaîne les bons coups, monte ta série, ton multiplicateur grimpe." },
+  { icon: ShieldCheck, title: "Garde le contrôle.", text: "Trop agressif, ton profil devient instable. Trouve l'équilibre." },
 ];
 
 /** Ultra-short 3-step intro, shown once. Fully skippable. */
@@ -31,10 +31,10 @@ export function Onboarding() {
           55 Seconds
         </p>
         <h2 className="mt-1 text-2xl font-extrabold italic tracking-tight">
-          Teste ton instinct business.
+          Révèle ton instinct business.
         </h2>
         <p className="mt-1 text-sm text-ink-muted">
-          Simulation fictive. Réflexes réels.
+          Simulation fictive. Réflexes réels. Prêt en 5 secondes.
         </p>
 
         <div className="mt-5 space-y-3">
@@ -56,7 +56,7 @@ export function Onboarding() {
 
         <div className="mt-6">
           <GlowButton onClick={completeOnboarding} className="w-full">
-            J&apos;ai compris
+            Je suis prêt
           </GlowButton>
         </div>
       </motion.div>

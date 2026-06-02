@@ -238,7 +238,7 @@ export default function PlayPage() {
             <div className="min-w-0 flex-1">
               <p className="font-bold">Profil débloqué</p>
               <p className="text-xs text-ink-muted">
-                Continue pour optimiser ton score, ou termine maintenant.
+                Continue pour pousser ton score, ou encaisse maintenant.
               </p>
             </div>
             <GlowButton variant="secondary" onClick={finishNow} className="px-4 py-2 text-sm">
